@@ -72,8 +72,6 @@ void setup() {
   } //End setup()
 //
 void draw() {
-  //Population that changes
-
   //
   // Eyes
   fill(eyeColour);
@@ -93,11 +91,11 @@ void draw() {
   line(mouthX1, mouthY1, mouthX2, mouthY2);
   strokeWeight(reset);
   stroke(black);
-
+  //Measles
   measleX = random(displayWidth*1/2 - displayHeight*1/2, displayWidth*1/2 + displayHeight*1/2);
   measleY = random(0, displayHeight);
   measleDiameter = random(pupilDiameter1, eyeDiameter1);
-  fill(measleColour);
+  fill(random(255), random(255), random(255));
   ellipse(measleX, measleY, measleDiameter, measleDiameter);
   fill(resetColour);
   //
