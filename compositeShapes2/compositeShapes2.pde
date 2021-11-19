@@ -6,12 +6,15 @@ float eyeX1, eyeY1, eyeDiameter1;
 float pupilX1, pupilY1, pupilDiameter1;
 float eyeX2, eyeY2, eyeDiameter2;
 float pupilX2, pupilY2, pupilDiameter2;
-color black=#000000, blue=#5BA7C4, orange=#FFEFDF, red=#E47A7A, darkRed=#DB2D2D, white=#FFFFFF;
-color eyeColour, pupilColour, skinColour, mouthColour, measleColour, resetColour;
+color eyeColour, pupilColour, skinColour, mouthColour, measleColour, resetColour, buttonColour, black=#000000, blue=#5BA7C4, orange=#FFEFDF, red=#E47A7A, darkRed=#DB2D2D, white=#FFFFFF;
 float noseX1, noseY1, noseX2, noseY2, noseX3, noseY3;
 float mouthX1, mouthY1, mouthX2, mouthY2;
 float mouthThick, reset;
 float measleX, measleY, measleDiameter;
+float buttonX, buttonY, buttonWidth, buttonHeight;
+PImage pic1;
+float pic1ImageWidthRatio, pic1ImageHeightRatio;
+float picX1, picY1, picWidth1, picHeight1;
 //
 void setup() {
   //Geometry
@@ -64,6 +67,20 @@ void setup() {
   mouthThick = 40;
   reset = 1;
   //
+  buttonX = displayWidth*1/35;
+  buttonY = displayHeight*4/10;
+  buttonWidth = (displayWidth-displayHeight)*1/3;
+  buttonHeight = displayHeight*1/10;
+  //
+  pic1 = loadImage("exit.png");
+  //
+  pic1ImageWidthRatio = 174.0/174.0; //Longest side is 1
+  pic1ImageHeightRatio = 78.0/174.0; //Shorter side is less that 1
+  picWidth1 = buttonWidth;
+  picHeight1 = buttonHeight;
+  picX1 = buttonX;
+  picY1 = buttonY;
+  //
   //Canvas
   rect(rectX, rectY, rectWidth, rectHeight);
   // Face
@@ -98,5 +115,22 @@ void draw() {
   fill(random(255), random(255), random(255));
   ellipse(measleX, measleY, measleDiameter, measleDiameter);
   fill(resetColour);
+
+  //Exit Button
+  if ( mouseX >= buttonX  && mouseY >= buttonY && mouseX <= buttonX+buttonWidth && mouseY <= buttonY+buttonHeight ) {
+      buttonColour = white;
+    } else {
+      buttonColour = black;
+      } //End IF Button Colour
+  fill(buttonColour);
+  rect(buttonX, buttonY, buttonWidth, buttonHeight);
+  //Exit Image
+  image(pic1, picX1, picY1, picWidth1, picHeight1);
   //
-  } //End draw
+  } //End Draw
+
+  void mousePressed() {
+    //Exit
+    if ( mouseX >= buttonX  && mouseY >= buttonY && mouseX <= buttonX+buttonWidth && mouseY <= buttonY+buttonHeight ) exit();
+    //
+    } //End mousePressed
