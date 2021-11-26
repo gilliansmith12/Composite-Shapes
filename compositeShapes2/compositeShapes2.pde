@@ -119,18 +119,20 @@ void draw() {
   //Exit Button
   if ( mouseX >= buttonX  && mouseY >= buttonY && mouseX <= buttonX+buttonWidth && mouseY <= buttonY+buttonHeight ) {
       buttonColour = white;
-    } else {
+  } else {
       buttonColour = black;
-      } //End IF Button Colour
+  } //End IF Button Colour
   fill(buttonColour);
   rect(buttonX, buttonY, buttonWidth, buttonHeight);
   //Exit Image
   image(pic1, picX1, picY1, picWidth1, picHeight1);
   //
-  } //End Draw
+} //End Draw
 
   void mousePressed() {
     //Exit
-    if ( mouseX >= buttonX  && mouseY >= buttonY && mouseX <= buttonX+buttonWidth && mouseY <= buttonY+buttonHeight ) exit();
+    if ( mouseX >= buttonX  && mouseY >= buttonY && mouseX <= buttonX+buttonWidth && mouseY <= buttonY+buttonHeight ) {
+      exit();
+    }
     //
-    } //End mousePressed
+  } //End mousePressed
